@@ -1,0 +1,59 @@
+<!doctype html>
+<html ng-app="myapp">
+   
+   <head>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.5/angular.min.js"></script>
+      <script src = "app.js"></script>
+   </head>
+   
+   <body >
+
+   <h1 ng-bind = "binding + message"></h1>
+    <div  ng-model="message" ng-init = "message = 'Hello !'"></div>
+    <div>{{ message }}</div>
+    <div>{{ message + message }}</div>
+    <div>{{ message == "hello" }}</div>
+    <div>{{1+2}}</div>
+    <div ng-bind = "message"></div>
+    <div ng-bind = "message + message">{{ message + message }}</div>
+    <div ng-bind = "message == 'Hello !'"></div>
+    <div ng-bind = "5+6+7"></div>
+      <div ng-controller="HelloController as hello">
+         
+         <h1>Hello {{helloTo.title}}!</h1>
+         <input type="text" ng-model="hello.newMsg"/>
+         <button type="submit" ng-click="updateMessage(hello.newMsg)">Please Update</button> 
+      </div>
+      <hr>
+      <div ng-controller="DoubleController as dg">
+         Two times <input ng-model="num"> equals {{double(num)}}
+         and Square is {{square(num)}}
+         and Cube is {{cube(num)}}
+      </div>
+
+<div class="spicy">
+  <div ng-controller="MainController">
+    <p>Good {{timeOfDay}}, {{name}}!</p>
+
+    <div ng-controller="ChildController">
+      <p>Good {{timeOfDay}}, {{name}}!</p>
+
+      <div ng-controller="GrandChildController">
+        <p>Good {{timeOfDay}}, {{name}}!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-controller="PostMsgCntrl as post">
+   <div >Add message to the List
+   <input type="text"  ng-model="post.newMessage">
+   <button type="submit" ng-click="post.addMessage(post.newMessage)">Add</button>
+   </div>
+</div>
+<div ng-controller="ListCntrl as lst">
+   <div ng-repeat="msg in lst.messages">{{ msg.id }}: {{ msg.text }}</div>
+</div>
+      
+   </body>
+</html>
